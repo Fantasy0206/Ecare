@@ -6,9 +6,12 @@
     <script src="js/jquery.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/angular1.4.6.min.js"></script>
     <script type="text/javascript" src="js/angular-ui-router.min.js"></script>
+    <script src="js/angular-sanitize.js" charset="utf-8"></script>
+    <script src="js/angular-angular-animate.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/angular-ui-bootstrap-2.5.0.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="script.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <style media="screen">
@@ -126,13 +129,19 @@
       color:#333;
       transition: transform 0.3s;
     }
+    .hide{
+      display:none
+    }
+    .show{
+      display: block
+    }
   </style>
-  
+
   <body data-ng-app="myApp">
     <header>
       <span id="logo">ECARE</span>
       <div class="main-menu" app-test>
-        <div class="btn">
+        <div class="btn123">
           <span class="main-menu-text">基础与维护</span>
           <span class="icon-down main-icon"></span>
         </div>

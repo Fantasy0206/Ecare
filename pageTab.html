@@ -1,14 +1,87 @@
-    <div style="margin-top:200px">
-        <div>
-          2333333333333333333333333
-            <span style="width:100px" ui-sref=".page1"><a href="">Page-1</a></span>
-            <span style="width:100px" ui-sref=".page2"><a href="">Page-2</a></span>
-            <span style="width:100px" ui-sref=".page3"><a href="">Page-3</a></span>
+<div class="pageTab" style="padding:0 15px" data-ng-controller="pageTab">
+    <form id="main"  ng-show = "isShow" class="form-inline" style="padding-top:75px;">
+        <div class="form-group">
+            <label for="exampleInputName2">类别:</label>
+            <input ng-model = "searchType" type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
         </div>
-        <div class="" ng-include = "demo.html">
+        <div class="form-group">
+            <label for="exampleInputEmail2">名称:</label>
+            <input ng-model = "searchName" type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail2">单位:</label>
+            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+        </div>
+        <button type="button" class="btn btn-primary">搜索</button>
+        <button type="button" class="btn btn-primary">删除</button>
+        <button type="button" class="btn btn-primary" ng-click="edit('add')">新增</button>
+        <div class="bs-example" data-example-id="bordered-table" style="margin-top:20px;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>参数名称</th>
+                        <th>类别名称</th>
+                        <th>参数单位</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat = "item in items">
+                      <td>{{ item.num }}</td>
+                      <td ng-click = "edit(item.id)">{{ item.type }}</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.unit }}</td>
+                      <td>{{ item.remarks }}</td>
+                      <td>
+                        <button ng-click = "edit(item.id)"   class="btn"><span class="glyphicon glyphicon-pencil"></span>编辑</button>
+                        <button ng-click = "delete(item.id)" class="btn"><span class="glyphicon glyphicon-pencil"></span>删除</button>
+                      </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
 
+        <div id="formBody" ng-show = '!isShow'>
+            <form id="inputForm" action="" method="post" class="form-horizontal">
+                <div class="control-group" style="margin-bottom:15px">
+                    <div class="controls">
+                        <label class="control-label" style="width:100px;text-align:right">参数类别:</label>
+                        <input ng-model = "type" ng-disabled="isRead" id="type" name="type" maxlength="100" class="form-control" style="width:600px !important;display:inline-block" />
+                    </div>
+                </div>
+
+                <div class="control-group" style="margin-bottom:15px">
+                    <div class="controls">
+                        <label class="control-label" style="width:100px;text-align:right">参数名称:</label>
+                        <input ng-model = "name" ng-disabled="isRead" id="name" name="name" htmlEscape="false" maxlength="100" class="form-control" style="width:600px !important;display:inline-block" value="{{ n1 }}"/>
+                    </div>
+                </div>
+
+                <div class="control-group" style="margin-bottom:15px">
+                    <div class="controls">
+                        <label class="control-label" style="width:100px;text-align:right">单位:</label>
+                        <input ng-model = "unit" ng-disabled="isRead" id="unit" name="unit" htmlEscape="false" maxlength="100" class="form-control" style="width:600px !important;display:inline-block" />
+                    </div>
+                </div>
+                <!-- 备注 -->
+                <div class="control-group" style="margin-bottom:15px">
+                    <div class="controls">
+                        <label class="control-label pull-left" style="width:100px;text-align:right">备注:</label>
+                        <textarea ng-model = "remarks" ng-disabled = "isRead" id="remarks" name="remarks" htmlEscape="false" rows="6" maxlength="255" class="form-control" style="width:600px !important;display:inline-block"></textarea>
+                    </div>
+                </div>
+                <div class="control-group" style="margin-bottom:15px;margin-left:100px">
+                    <div class="controls">
+                      <button id="btnCancel" type="button" class="font btn btn-primary" style="width:100px;" ng-click = "save()">保存</button>
+                      <button id="btnCancel" type="button" class="font btn btn-default" style="width:100px;" ng-click="return()">返回</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div>
-            <div data-ui-view></div>
-        </div>
-    </div>
+
+
+
+</div>
