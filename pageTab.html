@@ -14,7 +14,7 @@
         </div>
         <button type="button" class="btn btn-primary">搜索</button>
         <button type="button" class="btn btn-primary">删除</button>
-        <button type="button" class="btn btn-primary" ng-click="edit('add')">新增</button>
+        <button type="button" class="btn btn-primary" ng-click="see('add')">新增</button>
         <div class="bs-example" data-example-id="bordered-table" style="margin-top:20px;">
             <table class="table table-bordered">
                 <thead>
@@ -30,7 +30,7 @@
                 <tbody>
                     <tr ng-repeat = "item in items">
                       <td>{{ item.num }}</td>
-                      <td ng-click = "edit(item.id)">{{ item.type }}</td>
+                      <td ng-click = "see(item.id)">{{ item.type }}</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.unit }}</td>
                       <td>{{ item.remarks }}</td>

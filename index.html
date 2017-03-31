@@ -29,7 +29,7 @@
       z-index: 100;
       clear: both;
       height: 50px;
-      padding: 0px 50px;
+      /*padding: 0px 50px;*/
       background: #373d41;
       font-size: 12px;
       width: 100%;
@@ -97,6 +97,7 @@
       cursor:pointer;
       color: #fff;
       padding:0px 18px;
+      transition: all 0.3s;
     }
     /*.main-menu:hover{
       background: #2a2f32
@@ -104,6 +105,8 @@
     .main-menu-click{
       background: #fff;
       color:#333;
+      transition: all 0.3s;
+
     }
     .main-menu-text{
       font-family: 微软雅黑;
@@ -117,7 +120,8 @@
       text-align:center;
       vertical-align:middle;
       display: inline-block;
-      ; /* Safari 和 Chrome */
+       /* Safari 和 Chrome */
+      transition: all 0.3s;
 
     }
     .main-icon-click{
@@ -135,20 +139,105 @@
     .show{
       display: block
     }
+    .dropdown{
+      /*position:absolute;*/
+      width:100%;
+      min-height: 200px;
+      background: #fff;
+      transition: all 0.15s, 0.15s;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .container-drop-inner{
+      position: relative;
+    }
+    .arraw-up-icon{
+      bottom: -20px;
+      left: 50%;
+      position: absolute;
+      color: #333;
+      font-size: 16px;
+      background: #fff;
+      width: 50px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+    .dropbar{
+      float: left;
+      width: 180px;
+      padding:16px 0 16px 16px;
+      border-right: 1px solid #f1f1f1;
+    }
+    .dropbar-list{
+      padding-left: 0
+    }
+    .dropbar-li{
+      color: #333;
+      width:164px;
+      height:32px;
+      line-height: 32px;
+      padding-left: 16px;
+      transition: all 0.1s 0s;
+      list-style: none;
+    }
+    .dropbar-li:hover{
+      color:#fff;
+      background: #00c1de
+    }
+    .dropbar-list .active{
+      color: #fff;
+      background: #00c1de
+    }
+
+    .dropbar-right{
+      margin-left:180px;
+      min-height: 200px;
+      padding:16px;
+    }
+    .dropbar-right-items{
+      width:33%;
+      padding-left: 0
+
+    }
+    .dropbar-right-item{
+      list-style: none;
+      display: inline-block;
+      width: 100%;
+      font-size: 14px;
+      background: #fff;
+    }
+    .dropbar-right-item :hover{
+      color: #fff;
+      background: #00c1de
+    }
+    .dropbar-right-item a{
+      width: 100%;
+      padding: 12px 16px;
+      transition: all 0.1s;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      color: #333;
+    }
+    .clear{
+      clear: both;
+    }
+    .pression:hover{
+      
+    }
   </style>
 
   <body data-ng-app="myApp">
-    <header>
+    <header ng-controller = "mainApp">
       <span id="logo">ECARE</span>
-      <div class="main-menu" app-test>
+      <div class="main-menu"  ng-click = "mainClick()" ng-class = "{'main-menu-click' : showMain}">
         <div class="btn123">
           <span class="main-menu-text">基础与维护</span>
-          <span class="icon-down main-icon"></span>
-        </div>
-        <div class="dropdown">
+          <span class="icon-down main-icon" ng-class = "{'main-icon-click': showMain}"></span>
         </div>
       </div>
-
       <div class="menu" style="margin-left:300px">
         <div class="menu-wrapper">
           <a class="param" href="javascript:;"><span>费用</span></a>
@@ -181,6 +270,79 @@
           </ul>
         </div>
       </div>
+      <div class="container-drop" ng-show = "isShowMain">
+        <div class="container-drop-inner">
+          <div class="dropdown">
+            <div class="dropbar">
+              <ul class="dropbar-list">
+                <li class="dropbar-li active">
+                  <span>全部</span>
+                </li>
+                <li class="dropbar-li pression">
+                  <span>维保项目管理</span>
+                </li>
+                <li class="dropbar-li">
+                  <span>维保申请管理</span>
+                </li>
+              </ul>
+            </div>
+            <div class="dropbar-right">
+              <ul class="dropbar-right-items">
+                <li class="dropbar-right-item">
+                  <a>
+                    <div class="">
+                          设备参数管理
+                    </div>
+                    <div class="" style="color:#999;font-size:12px;">
+                      通过机器学习和数据建模分析，发现潜在入侵和高隐蔽性攻击威胁
+                    </div>
+                  </a>
+                </li>
+                <li class="dropbar-right-item">
+                  <a>
+                    <div class="">
+                          设备参数管理
+                    </div>
+                    <div class="" style="color:#999;font-size:12px;">
+                      通过机器学习和数据建模分析，发现潜在入侵和高隐蔽性攻击威胁
+                    </div>                  </a>
+                </li>
+                <li class="dropbar-right-item">
+                  <a>
+                    <div class="">
+                          设备类别管理
+                    </div>
+                    <div class="" style="color:#999;font-size:12px;">
+                      通过机器学习和数据建模分析，发现潜在入侵和高隐蔽性攻击威胁
+                    </div>
+                  </a>
+                </li>
+                <li class="dropbar-right-item">
+                  <a>
+                    <div class="">
+                          设备参数管理
+                    </div>
+                    <div class="" style="color:#999;font-size:12px;">
+                      通过机器学习和数据建模分析，发现潜在入侵和高隐蔽性攻击威胁
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="clear">
+
+          </div>
+          <div class="arraw-up" ng-click = "hideDrop()">
+            <span class="icon-down arraw-up-icon"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+
+      </div>
+
     </header>
 
     <div data-ui-view=""></div>

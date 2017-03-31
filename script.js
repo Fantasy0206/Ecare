@@ -1,19 +1,44 @@
 var route = angular.module('myApp', ['ui.router', 'ui.bootstrap']);
-route.directive('appTest', function () {
-  return {
-      template: function () {
-          $('.main-menu').click(function () {
-            $(this).addClass('main-menu-click')
-            $('.main-icon').css('-webkit-transform','rotate(180deg)')
-          })
-          // $('.main-menu-click').click(function () {
-          //   $('.main-menu-click').removeClass('main-menu-click')
-          //   $('.main-icon').removeClass('main-icon-click')
-          // })
-      }
-  };
-})
+// route.directive('appTest', function () {
+//   return {
+//       template: function () {
+//           // $('.main-menu').click(function () {
+//           //   $(this).addClass('main-menu-click')
+//           //   $('.main-icon').css('-webkit-transform','rotate(180deg)')
+//           // })
+//           $('.main-menu').click(function () {
+//             if($('.main-menu').hasClass('main-menu-click')) {
+//               $('.main-menu').removeClass('main-menu-click')
+//               $('.main-icon').removeClass('main-icon-click')
+//             }
+//             else {
+//               $('.main-menu').addClass('main-menu-click')
+//               $('.main-icon').addClass('main-icon-click')
+//             }
+//           })
+//       }
+//   };
+// })
+route.controller('mainApp', function ($scope) {
+  $scope.isShowMain = false;
+  $scope.showMain = false;
+  $scope.hideDrop = function () {
+    $scope.isShowMain = false
+    $scope.showMain = false;
+  }
+  $scope.mainClick = function () {
+    if ($scope.showMain) {
+      $scope.isShowMain = false
+      $scope.showMain = false;
+    }
+    else {
+      $scope.isShowMain = true
+      $scope.showMain = true;
+    }
 
+
+  }
+})
 route.controller('pageTab', function ($scope) {
   $scope.type = '';
   $scope.name = '';
@@ -106,7 +131,7 @@ route.controller('pageTab', function ($scope) {
   ];
 
   // 查看
-  $scope.edit = function (id) {
+  $scope.see = function (id) {
     if(id == 'add'){
       $scope.isRead = false;
       $scope.isShow = !$scope.isShow;
@@ -152,8 +177,8 @@ route.controller('pageTab', function ($scope) {
   }
 
   //修改
-  $scope.edit = {
-    $scope.isRead = true;
+  $scope.edit = function (id) {
+    $scope.isRead = false;
     $scope.isShow = !$scope.isShow;
     $scope.type = $scope.items[id-1].type;
     $scope.unit = $scope.items[id-1].unit;
